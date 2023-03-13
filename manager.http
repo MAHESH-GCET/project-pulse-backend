@@ -1,0 +1,64 @@
+
+### ----------------- manager api ----------------------------
+### get projects under manager
+GET http://localhost:4000/manager/projects 
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzI2Mjg1LCJleHAiOjE2Nzg3MzIyODV9.pAmDYPGvY0WpRlKcG3B4cj2nsBDWS8XPKIXSF_377LI
+
+### get specific details of project
+GET http://localhost:4000/manager/project/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzI2Mjg1LCJleHAiOjE2Nzg3MzIyODV9.pAmDYPGvY0WpRlKcG3B4cj2nsBDWS8XPKIXSF_377LI
+
+### raise concern
+POST http://localhost:4000/manager/project-concern
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzA5NDYzLCJleHAiOjE2Nzg3MTU0NjN9.fyR9EKlEbx0D0zJ39ZTgrWkB5DYlArjba0p6bw2Xl-4
+Content-Type: application/json
+
+{
+    "project_concerns":
+    {
+        "project_id":1,
+        "concern_desc":"lack of developers",
+        "concern_raised_by":"manager",
+        "severity_of_concern":"extreme",
+        "concern_raised_by_client":false,
+        "status_of_concern":"pending"
+    }
+}
+
+### modify existing project concern
+PUT http://localhost:4000/manager/modify-project-concern/2
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzI2Mjg1LCJleHAiOjE2Nzg3MzIyODV9.pAmDYPGvY0WpRlKcG3B4cj2nsBDWS8XPKIXSF_377LI
+Content-Type: application/json
+
+{
+    "project_id":1,
+    "status_of_concern":"fullfilled"   
+}
+### delete concern
+
+### project update
+POST http://localhost:4000/manager/project-update
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzIyNTc0LCJleHAiOjE2Nzg3Mjg1NzR9.MhwlOoA2k0NIfP_3gJ8-Md4KFYVLI7OKmnIUd0NtpbA
+Content-Type: application/json
+
+{
+    "project_updates":{
+    "project_id":3,
+    "project_status":"backend development completed",
+    "schedule_status":"green",
+    "resourcing_status":"green",
+    "quality_status":"green",
+    "waiting_for_client_ip":false
+    }
+}
+
+### modify existing project updates
+PUT http://localhost:4000/manager/modify-project-update/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzI2Mjg1LCJleHAiOjE2Nzg3MzIyODV9.pAmDYPGvY0WpRlKcG3B4cj2nsBDWS8XPKIXSF_377LI
+Content-Type: application/json
+
+{
+    "schedule_status":"red"   
+}
+
+### delete project update

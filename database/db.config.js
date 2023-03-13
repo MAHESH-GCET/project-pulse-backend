@@ -10,4 +10,5 @@ const Connection=new Sequelize(process.env.DB_NAME,process.env.DB_User,process.e
     root:"localhost",
     dialect:"mysql"
 });
+Connection.sync();
 module.exports=Connection;

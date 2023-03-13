@@ -1,0 +1,27 @@
+####             ------------ employee api ----------------
+# employee registration
+POST  http://localhost:4000/employee-registration 
+Content-Type: application/json
+
+{
+    "employee_name":"chaitanya",
+    "age":21,
+    "gender":"male",
+    "email":"chaitanya@westagilelabs.com",
+    "password":"chaitanya"
+}
+
+### employee login
+POST http://localhost:4000/employee-login 
+Content-Type: application/json
+
+{
+    "email":"shamir@westagilelabs.com",
+    "password":"shamir"
+}
+
+### forgot password
+
+### reset password
+
+

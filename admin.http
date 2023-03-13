@@ -1,0 +1,28 @@
+### ------------------admin api --------------------
+### add new project\
+POST http://localhost:4000/admin/add-project
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NzAxNzE1LCJleHAiOjE2Nzg3MDc3MTV9.Z_NCLxb1RS3gLB6F1bbQrFiExnM2rOAPXIuuw1TJWZU
+Content-Type: application/json
+
+{
+    "project_name":"e commerce",
+    "client":"wal",
+    "client_account_manager":2,
+    "status":"in progress",
+    "project_start_date":"2022-12-12",
+    "project_fitness_indicator":"green",
+    "domain":"webdev",
+    "type_of_project":"development",
+    "gdo_head":3,
+    "project_manager":6
+}
+
+### get all projects 
+
+### get specific project details
+
+### get resourcing request by admin
+
+### update existing project
+
+### delete existing project
