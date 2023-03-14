@@ -2,7 +2,11 @@
 ### -----------------gdo api ---------------------------
 ### get all projects under gdo
 GET http://localhost:4000/projects
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3MDI3NTQsImV4cCI6MTY3ODcwODc1NH0.sLr1qsTZ5kqPHLGyNOuEnHK0hMfpea6O_nlsaHGwD3c
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3NjgzMDksImV4cCI6MTY3ODc3NDMwOX0.IG3Z6NFrs26CfoNJHVlmt4u-5uIuxvBE6hftNf1KEoo
+
+### get all employees
+GET http://localhost:4000/employees
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3NjgzMDksImV4cCI6MTY3ODc3NDMwOX0.IG3Z6NFrs26CfoNJHVlmt4u-5uIuxvBE6hftNf1KEoo
 ### assign team
 POST http://localhost:4000/assign-team 
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImlhdCI6MTY3ODcwMjAwOCwiZXhwIjoxNjc4NzA4MDA4fQ.CIH_RdAuca48WYYFGl-A2PC7AEHF3VpR1hKZaWJgfN8
@@ -34,7 +38,14 @@ Content-Type: application/json
 }
 
 ### get specific project details
-
-### update existing employee details
+GET http://localhost:4000/project/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3Njg3MDksImV4cCI6MTY3ODc3NDcwOX0.HlXWVkzrUmnMUYdyaRkv3vuqz6ISAmGHPHZsbAEsCZQ
 
 ### raise resourcing request
+POST http://localhost:4000/project/1/resource-request
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3Njg3MDksImV4cCI6MTY3ODc3NDcwOX0.HlXWVkzrUmnMUYdyaRkv3vuqz6ISAmGHPHZsbAEsCZQ
+Content-Type: application/json
+
+{
+    "resource_desc":"need testers"
+}

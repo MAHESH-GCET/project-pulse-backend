@@ -1,7 +1,7 @@
 ### ------------------admin api --------------------
 ### add new project\
 POST http://localhost:4000/admin/add-project
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NzAxNzE1LCJleHAiOjE2Nzg3MDc3MTV9.Z_NCLxb1RS3gLB6F1bbQrFiExnM2rOAPXIuuw1TJWZU
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s
 Content-Type: application/json
 
 {
@@ -18,11 +18,25 @@ Content-Type: application/json
 }
 
 ### get all projects 
+GET http://localhost:4000/admin/projects
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
 
 ### get specific project details
+GET http://localhost:4000/admin/project/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
 
-### get resourcing request by admin
+### get resourcing request by admin on particular project
+GET http://localhost:4000/admin/project/2/resource-requests
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
 
 ### update existing project
+PUT http://localhost:4000/admin/edit/project/3
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
+Content-Type: application/json
 
+{
+    "status":"completed"
+}
 ### delete existing project
+DELETE http://localhost:4000/admin/edit/project/2
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 

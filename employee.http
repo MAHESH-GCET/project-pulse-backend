@@ -16,8 +16,8 @@ POST http://localhost:4000/employee-login
 Content-Type: application/json
 
 {
-    "email":"shamir@westagilelabs.com",
-    "password":"shamir"
+    "email":"sashi@westagilelabs.com",
+    "password":"sashi"
 }
 
 ### forgot password
