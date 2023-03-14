@@ -1,7 +1,10 @@
 //import express async handler
 const expressAsyncHandler=require('express-async-handler');
-const { where } = require('sequelize');
 const {Op}=require('sequelize')
+//import nodemailer
+const nodemailer=require('nodemailer');
+require('dotenv').config();
+
 //import all models
 const {Employees}=require('../database/models/employee.model');
 const {Project}=require('../database/models/project.model');
@@ -61,12 +64,35 @@ exports.getSpecificProjectDetails=expressAsyncHandler(async(req,res)=>{
       }
     res.send({message:`project under ${projectIdFromClient} `,payload:projectObj})
 })
+
+//create connection to smtp
+const transporter = nodemailer.createTransport({
+    service: process.env.EMAIL_SERVICE_PROVIDER,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASSWORD, // app password
+    },
+});
+
 //to raise a concern
 exports.raiseConcern=expressAsyncHandler(async(req,res)=>{
     let concernObj=await Project_Concerns.create(req.body.project_concerns);
-    //trigger mail to admin and gdo
-    //
-    //
+    let mailOptions = {
+        from: "mehakarmahesh@gmail.com",
+        to: "shamir@westagilelabs.com",
+        subject: `new concern raised by ${concernObj.concern_raised_by}`,
+        text: `the concern is ${concernObj.concern_desc}` ,
+    };
+
+    // send email
+    transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log("err");
+    } 
+    else {
+      console.log("email sent", info.messageId);
+    }
+    })
     res.send({message:"concern raised",payload:concernObj});
 })
 
@@ -78,7 +104,7 @@ exports.modifyConcern=expressAsyncHandler(async(req,res)=>{
 
 //to update project progress
 exports.updateProjectProgress=expressAsyncHandler(async(req,res)=>{
-    let updateObj=await Project_Updates.create(req.body.project_updates,{date:new Date});
+    let updateObj=await Project_Updates.create(req.body.project_updates);
     res.send({message:"project progress updated",payload:updateObj});
 })
 

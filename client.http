@@ -1,0 +1,210 @@
+####----------------------------------- employee api ----------------------------------------------------------------
+# employee registration
+POST  http://localhost:4000/employee-registration 
+Content-Type: application/json
+
+{
+    "employee_name":"chaitanya",
+    "age":21,
+    "gender":"male",
+    "email":"chaitanya@westagilelabs.com",
+    "password":"chaitanya"
+}
+
+### employee login
+POST http://localhost:4000/employee-login 
+Content-Type: application/json
+
+{
+    "email":"shamir@westagilelabs.com",
+    "password":"shamir123"
+}
+
+### forgot password
+POST http://localhost:4000/forgot-password
+Content-Type: application/json
+
+{
+    "email":"shamir@westagilelabs.com"
+}
+### reset password
+PUT  http://localhost:4000/reset-password/shamir@westagilelabs.com
+Content-Type: application/json
+
+{
+    "otp":723351,
+    "password":"shamir123"
+}
+
+### ---------------------------------super-admin api------------------------------------------------------------
+###assign role
+PUT  http://localhost:4000/super-admin/assign-role
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hdmVlbkB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTY3ODcwMTU2MCwiZXhwIjoxNjc4NzA3NTYwfQ.qhL5oLTqnvL_lt77DBheILoBTd98v8i2PnqV0pwECAc
+Content-Type: application/json
+
+{
+    "email":"chaitanya@westagilelabs.com",
+    "role":"project-manager"
+}
+
+### get all data of gdos
+GET http://localhost:4000/super-admin/dashboard
+
+
+### ------------------------------------------admin api ----------------------------------------------------
+### add new project\
+POST http://localhost:4000/admin/add-project
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s
+Content-Type: application/json
+
+{
+    "project_name":"e commerce",
+    "client":"wal",
+    "client_account_manager":2,
+    "status":"in progress",
+    "project_start_date":"2022-12-12",
+    "project_fitness_indicator":"green",
+    "domain":"webdev",
+    "type_of_project":"development",
+    "gdo_head":3,
+    "project_manager":6
+}
+
+### get all projects 
+GET http://localhost:4000/admin/projects
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
+
+### get specific project details
+GET http://localhost:4000/admin/project/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
+
+### get resourcing request by admin on particular project
+GET http://localhost:4000/admin/project/2/resource-requests
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
+
+### update existing project
+PUT http://localhost:4000/admin/edit/project/3
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
+Content-Type: application/json
+
+{
+    "status":"completed"
+}
+### delete existing project
+DELETE http://localhost:4000/admin/edit/project/2
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc2OTk4OSwiZXhwIjoxNjc4Nzc1OTg5fQ.rO1eVwqKqfADf8ii5eP3uxnUAtZVl5mkQfxaWluzG2s 
+
+
+### -----------------------------------------gdo api --------------------------------------------------------
+### get all projects under gdo
+GET http://localhost:4000/projects
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3NjgzMDksImV4cCI6MTY3ODc3NDMwOX0.IG3Z6NFrs26CfoNJHVlmt4u-5uIuxvBE6hftNf1KEoo
+
+### get all employees
+GET http://localhost:4000/employees
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3NjgzMDksImV4cCI6MTY3ODc3NDMwOX0.IG3Z6NFrs26CfoNJHVlmt4u-5uIuxvBE6hftNf1KEoo
+### assign team
+POST http://localhost:4000/assign-team 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImlhdCI6MTY3ODcwMjAwOCwiZXhwIjoxNjc4NzA4MDA4fQ.CIH_RdAuca48WYYFGl-A2PC7AEHF3VpR1hKZaWJgfN8
+Content-Type: application/json
+
+{
+    
+    "team_composition":[
+        {
+            "project_id":1,
+            "role_in_project":"dev",
+            "start_date":"2023-02-23",
+            "status":"active",
+            "billing_status":"billed",
+            "exposed_to_customer":true,
+            "allocation_type":"temporary"
+        },
+        {
+            "project_id":1,
+            "role_in_project":"frontend dev",
+            "start_date":"2023-03-10",
+            "status":"active",
+            "billing_status":"buffered",
+            "exposed_to_customer":false,
+            "allocation_type":"temporary"
+        }
+    ]
+    
+}
+
+### get specific project details
+GET http://localhost:4000/project/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3Njg3MDksImV4cCI6MTY3ODc3NDcwOX0.HlXWVkzrUmnMUYdyaRkv3vuqz6ISAmGHPHZsbAEsCZQ
+
+### raise resourcing request
+POST http://localhost:4000/project/1/resource-request
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3Njg3MDksImV4cCI6MTY3ODc3NDcwOX0.HlXWVkzrUmnMUYdyaRkv3vuqz6ISAmGHPHZsbAEsCZQ
+Content-Type: application/json
+
+{
+    "resource_desc":"need testers"
+}
+
+### update status of teammate in team by gdo
+
+### ---------------------------------- manager api --------------------------------------------------------
+### get projects under manager
+GET http://localhost:4000/manager/projects 
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzI2Mjg1LCJleHAiOjE2Nzg3MzIyODV9.pAmDYPGvY0WpRlKcG3B4cj2nsBDWS8XPKIXSF_377LI
+
+### get specific details of project
+GET http://localhost:4000/manager/project/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4Nzg1MjczLCJleHAiOjE2Nzg3OTEyNzN9.7lncQZyKxk1T9dYQ2HVEwrogwwJuZmawY6J2su3CDgc
+### raise concern
+POST http://localhost:4000/manager/project-concern
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4Nzg1MjczLCJleHAiOjE2Nzg3OTEyNzN9.7lncQZyKxk1T9dYQ2HVEwrogwwJuZmawY6J2su3CDgc
+Content-Type: application/json
+
+{
+    "project_concerns":
+    {
+        "project_id":1,
+        "concern_desc":"lack of developers",
+        "concern_raised_by":"manager",
+        "severity_of_concern":"extreme",
+        "concern_raised_by_client":false,
+        "status_of_concern":"pending"
+    }
+}
+
+### modify existing project concern
+PUT http://localhost:4000/manager/modify-project-concern/2
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzI2Mjg1LCJleHAiOjE2Nzg3MzIyODV9.pAmDYPGvY0WpRlKcG3B4cj2nsBDWS8XPKIXSF_377LI
+Content-Type: application/json
+
+{
+    "project_id":1,
+    "status_of_concern":"fullfilled"   
+}
+
+### project update
+POST http://localhost:4000/manager/project-update
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4Nzg1MjczLCJleHAiOjE2Nzg3OTEyNzN9.7lncQZyKxk1T9dYQ2HVEwrogwwJuZmawY6J2su3CDgc
+Content-Type: application/json
+
+{
+    "project_updates":{
+    "project_id":1,
+    "project_status":"backend development completed",
+    "date":"2023-01-20",
+    "schedule_status":"green",
+    "resourcing_status":"green",
+    "quality_status":"green",
+    "waiting_for_client_ip":false
+    }
+}
+
+### modify existing project updates
+PUT http://localhost:4000/manager/modify-project-update/1
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjc4NzI2Mjg1LCJleHAiOjE2Nzg3MzIyODV9.pAmDYPGvY0WpRlKcG3B4cj2nsBDWS8XPKIXSF_377LI
+Content-Type: application/json
+
+{
+    "schedule_status":"red"   
+}
