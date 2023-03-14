@@ -8,6 +8,9 @@ exports.Project_Updates=connection.define('project_updates',{
         primaryKey:true,
         autoIncrement:true,
     },
+    date:{
+        type:DataTypes.DATE
+    },
     project_status:{
         type:DataTypes.STRING,
         allowNull:false,

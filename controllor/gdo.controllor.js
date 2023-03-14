@@ -35,8 +35,11 @@ exports.AssignTeam=expressAsyncHandler(async(req,res)=>{
 //particular project details
 exports.projectDetails=expressAsyncHandler(async(req,res)=>{
     let project_id=req.params.project_id;
+    //display project fitness, concern indicator, teamm members
+    //
+    //
     let projectObj=await Project.findByPk(project_id,{
-        include:[{model:Project_Updates},{model:Project_Concerns}]
+        include:[{model:Team_Composition},{model:Project_Updates},{model:Project_Concerns}]
     });
     res.send({message:`project details of ${project_id} are`,payload:projectObj})
 })

@@ -1,7 +1,7 @@
 //import express async handler
 const expressAsyncHandler=require('express-async-handler');
 const { where } = require('sequelize');
-
+const {Op}=require('sequelize')
 //import all models
 const {Employees}=require('../database/models/employee.model');
 const {Project}=require('../database/models/project.model');
@@ -33,14 +33,40 @@ exports.getSpecificProjectDetails=expressAsyncHandler(async(req,res)=>{
     let projectObj=await Project.findAll({where:{project_id:projectIdFromClient},
         include:[
         {model:Project_Concerns},
-        {model:Project_Updates}
+        {model:Team_Composition}
         ]
     });
+    //check if project data is available
+    if (projectObj != undefined) {
+        // retrieveing the project updates only before 2 weeks
+        let today = new Date();
+        let dateBeforeTwoWeeks = new Date();
+        dateBeforeTwoWeeks.setDate(today.getDate() - 14);
+        let projectUpdatedBeforeTwoWeeks = await Project_Updates.findAll({
+          where: {
+            date: {
+              [Op.between]: [dateBeforeTwoWeeks, today],
+            },
+          },
+        });
+        // send response
+        res.send({
+          message: `Project Detaitls for projectId ${projectIdFromClient}`,
+          payload: projectObj,
+          projectUpdates: projectUpdatedBeforeTwoWeeks,
+        });
+      }
+      else{
+        res.send({message:"Project not found"})
+      }
     res.send({message:`project under ${projectIdFromClient} `,payload:projectObj})
 })
 //to raise a concern
 exports.raiseConcern=expressAsyncHandler(async(req,res)=>{
     let concernObj=await Project_Concerns.create(req.body.project_concerns);
+    //trigger mail to admin and gdo
+    //
+    //
     res.send({message:"concern raised",payload:concernObj});
 })
 
@@ -52,7 +78,7 @@ exports.modifyConcern=expressAsyncHandler(async(req,res)=>{
 
 //to update project progress
 exports.updateProjectProgress=expressAsyncHandler(async(req,res)=>{
-    let updateObj=await Project_Updates.create(req.body.project_updates);
+    let updateObj=await Project_Updates.create(req.body.project_updates,{date:new Date});
     res.send({message:"project progress updated",payload:updateObj});
 })
 

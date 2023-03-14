@@ -49,3 +49,5 @@ app.use((err, req, res, next)=>{
 app.use((error, req,res,next)=>{
     res.send({message:"error occured",Error:error.message})
 })
+
+console.log(app.get('port'));
