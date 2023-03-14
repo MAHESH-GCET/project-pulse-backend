@@ -1,3 +1,4 @@
+//import db connection
 const connection=require('../db.config');
 const {DataTypes}=require('sequelize');
 const {Project}=require('./project.model');

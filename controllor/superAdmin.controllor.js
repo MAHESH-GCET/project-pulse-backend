@@ -5,6 +5,7 @@ const {Employees}=require('../database/models/employee.model');
 //assign roles
 exports.assignRole=expressAsyncHandler(async(req,res)=>{
     let {email,role}=req.body;
+    //find employee with clients email
     let employeeObj=await Employees.findOne(
         {
             where:{
@@ -12,9 +13,11 @@ exports.assignRole=expressAsyncHandler(async(req,res)=>{
             }
         }
     );
+    //when employee not found
     if(employeeObj==null){
         res.send({message:"employee not found"})
     }
+    //employee found
     else{
         await Employees.update(
             {role:role},
@@ -27,8 +30,4 @@ exports.assignRole=expressAsyncHandler(async(req,res)=>{
         );
         res.send({message:`employee ${email} assigned as ${role}`})
     }
-})
-
-exports.viewDashboard=expressAsyncHandler(async(req,res)=>{
-
 })

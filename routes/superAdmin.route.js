@@ -16,4 +16,6 @@ superAdminApp.put('/super-admin/assign-role',verifySuperAdmin,assignRole);
 
 //admin dashboard
 superAdminApp.get('/super-admin/dashboard',verifySuperAdmin,);
+
+//export super admin app
 module.exports = superAdminApp;

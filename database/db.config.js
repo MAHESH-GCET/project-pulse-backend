@@ -11,4 +11,5 @@ const Connection=new Sequelize(process.env.DB_NAME,process.env.DB_User,process.e
     dialect:"mysql"
 });
 Connection.sync();
+//export db connection
 module.exports=Connection;

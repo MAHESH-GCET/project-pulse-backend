@@ -1,5 +1,4 @@
 //import express async handler
-const exp = require('constants');
 const expressAsyncHandler=require('express-async-handler');
 //import all models
 const {Employees}=require('../database/models/employee.model');
@@ -17,17 +16,24 @@ Team_Composition.Project=Team_Composition.belongsTo(Project,{foreignKey:"project
 
 //get all projects
 exports.allProjects=expressAsyncHandler(async(req,res)=>{
-    let projectsUnderGdo=await Project.findAll({where: {gdo_head: req.employee.employee_id}});
+    //gets projects only under gdo
+    let projectsUnderGdo=await Project.findAll({
+        where: {
+            gdo_head: req.employee.employee_id
+        }
+    });
     res.send({payload:projectsUnderGdo});
 });
 
 //get all employees
 exports.employeeList=expressAsyncHandler(async(req,res)=>{
+    //get all employees from employee model
     let employeeList=await Employees.findAll();
     res.send({payload:employeeList});
 })
 //assign team
 exports.AssignTeam=expressAsyncHandler(async(req,res)=>{
+    //assigns team as bulk
     await Team_Composition.bulkCreate(req.body.team_composition);
     res.send({message:"team assigned"})
 });
@@ -35,18 +41,28 @@ exports.AssignTeam=expressAsyncHandler(async(req,res)=>{
 //particular project details
 exports.projectDetails=expressAsyncHandler(async(req,res)=>{
     let project_id=req.params.project_id;
-    //display project fitness, concern indicator, teamm members
-    //
-    //
-    let projectObj=await Project.findByPk(project_id,{
-        include:[{model:Team_Composition},{model:Project_Updates},{model:Project_Concerns}]
-    });
+    let projectObj=await Project.findByPk(project_id,
+        {
+            include:[
+                {model:Team_Composition},
+                {model:Project_Updates},
+                {model:Project_Concerns},
+                {model:Resource_Requests}
+            ]
+        }
+    );
     res.send({message:`project details of ${project_id} are`,payload:projectObj})
 })
 
 //raise resourcing request
 exports.resourceRequest=expressAsyncHandler(async(req,res)=>{
     let project_id=req.params.project_id;
-    let resourceObj=await Resource_Requests.create({project_id:project_id,resource_desc:req.body.resource_desc});
+    //raise new request
+    let resourceObj=await Resource_Requests.create(
+        {
+            project_id:project_id,
+            resource_desc:req.body.resource_desc
+        }
+    );
     res.send({message:"request raised",payload:resourceObj});
-})
+});

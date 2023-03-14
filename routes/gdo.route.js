@@ -1,4 +1,5 @@
 const express=require('express');
+//create gdo mini application
 const gdoApp=express.Router();
 
 //body parser
@@ -23,4 +24,6 @@ gdoApp.get('/project/:project_id',verifyGdo,projectDetails);
 
 //raising resource request
 gdoApp.post('/project/:project_id/resource-request',verifyGdo,resourceRequest);
+
+//export gdo app
 module.exports = gdoApp;

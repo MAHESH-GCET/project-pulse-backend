@@ -1,4 +1,5 @@
 const express=require('express');
+//create manager mini application
 const managerApp=express.Router();
 
 //body parser
@@ -27,5 +28,5 @@ managerApp.post('/manager/project-update',verifyManager,updateProjectProgress);
 //modify existing project update
 managerApp.put('/manager/modify-project-update/:update_id',verifyManager,modifyUpdate);
 
-
+//export manager app
 module.exports = managerApp;

@@ -1,4 +1,6 @@
+//import express
 const express=require('express');
+//create admin mini appication
 const adminApp=express.Router();
 
 //body parser
@@ -25,4 +27,6 @@ adminApp.put('/admin/edit/project/:project_id',verifyAdmin,updateProject);
 
 //delete project
 adminApp.delete('/admin/edit/project/:project_id',verifyAdmin,deleteProject);
+
+//export app
 module.exports=adminApp;

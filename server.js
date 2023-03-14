@@ -40,6 +40,8 @@ app.use(gdoApp);
 //import manager app
 const managerApp=require('./routes/manager.route');
 app.use(managerApp);
+
+
 //error handling middlewares
 app.use((err, req, res, next)=>{
     res.send({errMsg: err.message})
@@ -50,4 +52,3 @@ app.use((error, req,res,next)=>{
     res.send({message:"error occured",Error:error.message})
 })
 
-console.log(app.get('port'));

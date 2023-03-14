@@ -19,4 +19,5 @@ employeeApp.post('/forgot-password',forgotPassword);
 //reset passsword
 employeeApp.put('/reset-password/:email',resetPassword);
 
+//export app
 module.exports = employeeApp;
