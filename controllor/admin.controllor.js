@@ -13,21 +13,21 @@ const {Team_Composition}=require('../database/models/team-composition.model');
 exports.addProject=expressAsyncHandler(async(req,res)=>{
     let newProject=req.body;
     await Project.create(req.body);
-    res.send({message:"new project added"});
+    res.status(201).send({message:"new project added"});
 })
 
 //get project details
 exports.detailedProjectView=expressAsyncHandler(async(req,res)=>{
     //include updates,concerns and team realted to each project
     let projectObj=await Project.findAll({
-        include:[
-            {model:Team_Composition},
-            {model:Project_Updates},
-            {model:Project_Concerns},
-            {model:Resource_Requests}
-        ]
+        // include:[
+        //     {model:Team_Composition},
+        //     {model:Project_Updates},
+        //     {model:Project_Concerns},
+        //     {model:Resource_Requests}
+        // ]
     });
-    res.send({message:"details of all projects",payload:projectObj});
+    res.status(200).send({message:"details of all projects",payload:projectObj});
 })
 
 //get project details of specific project
@@ -44,18 +44,18 @@ exports.specificProjectView=expressAsyncHandler(async(req,res)=>{
             {model:Resource_Requests}
         ]
     });
-    res.send({message:`details view of project ${project_id}`,payload:projectObj});
+    res.status(200).send({message:`details view of project ${project_id}`,payload:projectObj});
 })
 
 //get resource requests of specific project
 exports.getResourceRequests=expressAsyncHandler(async(req,res)=>{
     let project_id=req.params.project_id;
-    let requestObj=await Resource_Requests.findOne(
+    let requestObj=await Resource_Requests.findAll(
         {
             where:{project_id:project_id}
         }
     );
-    res.send({message:`resource requests for project ${req.params.project_id}`,payload:requestObj})
+    res.status(200).send({message:`resource requests for project ${req.params.project_id}`,payload:requestObj})
 })
 
 //modify existing project details
@@ -66,7 +66,7 @@ exports.updateProject=expressAsyncHandler(async(req,res)=>{
             where:{project_id:project_id}
         }
     );
-    res.send({message:`project ${project_id} updated`});
+    res.status(200).send({message:`project ${project_id} updated`});
 })
 
 //delete project

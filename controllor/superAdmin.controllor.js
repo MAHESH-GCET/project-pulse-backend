@@ -15,7 +15,7 @@ exports.assignRole=expressAsyncHandler(async(req,res)=>{
     );
     //when employee not found
     if(employeeObj==null){
-        res.send({message:"employee not found"})
+        res.status(404).send({message:"employee not found"})
     }
     //employee found
     else{
@@ -28,6 +28,6 @@ exports.assignRole=expressAsyncHandler(async(req,res)=>{
                 }
             }
         );
-        res.send({message:`employee ${email} assigned as ${role}`})
+        res.status(200).send({message:`employee ${email} assigned as ${role}`})
     }
 })

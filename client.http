@@ -4,11 +4,11 @@ POST  http://localhost:4000/employee-registration
 Content-Type: application/json
 
 {
-    "employee_name":"chaitanya",
-    "age":21,
+    "employee_name":"gdotest",
+    "age":36,
     "gender":"male",
-    "email":"chaitanya@westagilelabs.com",
-    "password":"chaitanya"
+    "email":"gdotest.dummy@westagilelabs.com",
+    "password":"gdotest"
 }
 
 ### employee login
@@ -16,8 +16,8 @@ POST http://localhost:4000/employee-login
 Content-Type: application/json
 
 {
-    "email":"chaitanya@westagilelabs.com",
-    "password":"chaitanya"
+    "email":"gdotest.dummy@westagilelabs.com",
+    "password":"gdotest"
 }
 
 ### forgot password
@@ -43,8 +43,8 @@ Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hdmVlbk
 Content-Type: application/json
 
 {
-    "email":"chaitanya@westagilelabs.com",
-    "role":"project-manager"
+    "email":"gdotest.dummy@westagilelabs.com",
+    "role":"gdo"
 }
 
 ### get all data of gdos
@@ -58,7 +58,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQ
 Content-Type: application/json
 
 {
-    "project_name":"e commerce",
+    "project_name":"test project",
     "client":"wal",
     "client_account_manager":2,
     "status":"in progress",
@@ -66,7 +66,7 @@ Content-Type: application/json
     "project_fitness_indicator":"green",
     "domain":"webdev",
     "type_of_project":"development",
-    "gdo_head":3,
+    "gdo_head":7,
     "project_manager":6
 }
 
@@ -75,7 +75,7 @@ GET http://localhost:4000/admin/projects
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc5NjE5NCwiZXhwIjoxNjc5NDAwOTk0fQ.BTHaYRc3kvnsD7qPdIEmlzTQLHs3DI4-e95EWyDamac
 
 ### get specific project details
-GET http://localhost:4000/admin/project/1
+GET http://localhost:4000/admin/project/4
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc5NjE5NCwiZXhwIjoxNjc5NDAwOTk0fQ.BTHaYRc3kvnsD7qPdIEmlzTQLHs3DI4-e95EWyDamac
 
 ### get resourcing request by admin on particular project
@@ -91,20 +91,20 @@ Content-Type: application/json
     "status":"completed"
 }
 ### delete existing project
-DELETE http://localhost:4000/admin/edit/project/2
+DELETE http://localhost:4000/admin/edit/project/4
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc5NjE5NCwiZXhwIjoxNjc5NDAwOTk0fQ.BTHaYRc3kvnsD7qPdIEmlzTQLHs3DI4-e95EWyDamac
 
 
 ### -----------------------------------------------------------gdo api ------------------------------------------------------------------------
 ### get all projects under gdo
-GET http://localhost:4000/projects
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3OTYyNjAsImV4cCI6MTY3OTQwMTA2MH0.PazB70xYq7eYWYXIjTGkLlbcpVmEm28zGpXU0NTznyw
+GET http://localhost:4000/gdo/projects
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imdkb3Rlc3QuZHVtbXlAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiZW1wbG95ZWVfaWQiOjcsImlhdCI6MTY3ODc5Nzg3MSwiZXhwIjoxNjc5NDAyNjcxfQ.o3t07GxAtE4NZGkQf8G9wjXEcNAdY4NhRJv7_CBLA9s
 
 ### get all employees
-GET http://localhost:4000/employees
+GET http://localhost:4000/gdo/employees
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3OTYyNjAsImV4cCI6MTY3OTQwMTA2MH0.PazB70xYq7eYWYXIjTGkLlbcpVmEm28zGpXU0NTznyw
 ### assign team
-POST http://localhost:4000/assign-team 
+POST http://localhost:4000/gdo/assign-team 
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3OTYyNjAsImV4cCI6MTY3OTQwMTA2MH0.PazB70xYq7eYWYXIjTGkLlbcpVmEm28zGpXU0NTznyw
 Content-Type: application/json
 
@@ -112,7 +112,7 @@ Content-Type: application/json
     
     "team_composition":[
         {
-            "project_id":1,
+            "project_id":4,
             "role_in_project":"dev",
             "start_date":"2023-02-23",
             "status":"active",
@@ -121,7 +121,7 @@ Content-Type: application/json
             "allocation_type":"temporary"
         },
         {
-            "project_id":1,
+            "project_id":4,
             "role_in_project":"frontend dev",
             "start_date":"2023-03-10",
             "status":"active",
@@ -134,16 +134,16 @@ Content-Type: application/json
 }
 
 ### get specific project details
-GET http://localhost:4000/project/1
+GET http://localhost:4000/gdo/project/5
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3OTYyNjAsImV4cCI6MTY3OTQwMTA2MH0.PazB70xYq7eYWYXIjTGkLlbcpVmEm28zGpXU0NTznyw
 
 ### raise resourcing request
-POST http://localhost:4000/project/1/resource-request
+POST http://localhost:4000/gdo/project/1/resource-request
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3OTYyNjAsImV4cCI6MTY3OTQwMTA2MH0.PazB70xYq7eYWYXIjTGkLlbcpVmEm28zGpXU0NTznyw
 Content-Type: application/json
 
 {
-    "resource_desc":"need testers"
+    "resource_desc":"need developers"
 }
 
 ### update status of teammate in team by gdo
@@ -154,7 +154,7 @@ GET http://localhost:4000/manager/projects
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoYWl0YW55YUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NiwiaWF0IjoxNjc4Nzk2MzM2LCJleHAiOjE2Nzk0MDExMzZ9.yL0iy_ycZcA2bDE2OP1PRBcDJoNj1dsNiH0TEPlywuA
 
 ### get specific details of project
-GET http://localhost:4000/manager/project/1
+GET http://localhost:4000/manager/project/5
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoYWl0YW55YUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NiwiaWF0IjoxNjc4Nzk2MzM2LCJleHAiOjE2Nzk0MDExMzZ9.yL0iy_ycZcA2bDE2OP1PRBcDJoNj1dsNiH0TEPlywuA
 ### raise concern
 POST http://localhost:4000/manager/project-concern
@@ -190,7 +190,7 @@ Content-Type: application/json
 
 {
     "project_updates":{
-    "project_id":1,
+    "project_id":4,
     "project_status":"backend development completed",
     "date":"2023-01-20",
     "schedule_status":"green",

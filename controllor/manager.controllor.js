@@ -33,7 +33,7 @@ exports.getProjectUnderManager=expressAsyncHandler(async(req,res)=>{
         where:{project_manager:req.employee.employee_id}
       }
     );
-    res.send({message:`projects under manager ${req.employee.email}`,payload:projectUnderManager});
+    res.status(200).send({message:`projects under manager ${req.employee.email}`,payload:projectUnderManager});
 })
 
 //controllor to get specific project details
@@ -70,7 +70,7 @@ exports.getSpecificProjectDetails=expressAsyncHandler(async(req,res)=>{
     let teamCount=projectObj.dataValues.team_compositions.length+3;
     console.log(projectFitness,teamCount);
     // send response
-    res.send({
+    res.status(200).send({
       message: `Project Detaitls for projectId ${projectIdFromClient}`,
       projectFitness:projectFitness,
       Team_Count:teamCount,
@@ -79,7 +79,7 @@ exports.getSpecificProjectDetails=expressAsyncHandler(async(req,res)=>{
     });
   }
   else{
-    res.send({message:"Project not found"})
+    res.status(404).send({message:"Project not found"})
   }
 })
 
@@ -111,7 +111,7 @@ exports.raiseConcern=expressAsyncHandler(async(req,res)=>{
     console.log("email sent", info.messageId);
   }
   })
-  res.send({message:"concern raised",payload:concernObj});
+  res.status(201).send({message:"concern raised",payload:concernObj});
 })
 
 //modify existing concern
@@ -122,14 +122,14 @@ exports.modifyConcern=expressAsyncHandler(async(req,res)=>{
         concern_id:req.params.concern_id}
     }
   )
-  res.send({message:"concern status updated",payload:concernObj});
+  res.status(200).send({message:"concern status updated",payload:concernObj});
 })
 
 //to update project progress
 exports.updateProjectProgress=expressAsyncHandler(async(req,res)=>{
   //create update 
     let updateObj=await Project_Updates.create(req.body.project_updates);
-    res.send({message:"project progress updated",payload:updateObj});
+    res.status(200).send({message:"project progress updated",payload:updateObj});
 })
 
 //to modify project update
@@ -142,5 +142,5 @@ exports.modifyUpdate=expressAsyncHandler(async(req,res)=>{
         }
       }
     )
-    res.send({message:"status updated",payload:updateObj});
+    res.status(201).send({message:"status updated",payload:updateObj});
 })

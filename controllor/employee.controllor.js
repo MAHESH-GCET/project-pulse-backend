@@ -27,7 +27,7 @@ exports.employeeRegistration=expressAsyncHandler(async(req,res)=>{
     password:hashedPassword,
     role:role
   });
-  res.send({message:"employee registered"})
+  res.status(201).send({message:"employee registered"})
 });
 
 //employee login
@@ -38,14 +38,14 @@ exports.employeeLogin=expressAsyncHandler(async(req,res)=>{
     where:{email:email}
   });
   if(employeeObj==null){
-    res.send({message:"employee not found"});
+    res.status(404).send({message:"employee not found"});
   }
   //if employee exists
   else{
     //verify password
     let verifyPassword= await bcryptjs.compare(password,employeeObj.password);
     if(verifyPassword===false){
-      res.send({message:"invalid password"})
+      res.status(401).send({message:"invalid password"})
     }
     //if password verified, create jwt
     else{
@@ -59,7 +59,7 @@ exports.employeeLogin=expressAsyncHandler(async(req,res)=>{
         process.env.SECRET_KEY,{expiresIn:'7d'}
       )
       //send response
-      res.send({message:"Login Successfull",payload:signedToken});
+      res.status(200).send({message:"Login Successfull",payload:signedToken});
     }
   }
 })
@@ -99,7 +99,7 @@ exports.forgotPassword=expressAsyncHandler(async(req,res)=>{
     console.log("email sent", info.messageId);
   }
   })
-  res.send({message:"otp sent by email"})
+  res.status(200).send({message:"otp sent by email"})
 });
 
 //reset password
@@ -115,10 +115,10 @@ exports.resetPassword = expressAsyncHandler(async (req, res) => {
         where: {email: req.params.email},
       }
     );
-    res.send({ message: "Password reset sucessfully" });
+    res.status(200).send({ message: "Password reset sucessfully" });
   }
   // else
   else {
-    res.send({ message: "Invalid OTP" });
+    res.status(401).send({ message: "Invalid OTP" });
   }
 });

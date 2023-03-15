@@ -11,19 +11,19 @@ const {AssignTeam,allProjects,employeeList,projectDetails,resourceRequest}=requi
 //route
 
 //get all projects
-gdoApp.get('/projects',verifyGdo,allProjects);
+gdoApp.get('/gdo/projects',verifyGdo,allProjects);
 
 //assign a team for project
-gdoApp.post('/assign-team',verifyGdo,AssignTeam);
+gdoApp.post('/gdo/assign-team',verifyGdo,AssignTeam);
 
 //all employees
-gdoApp.get('/employees',verifyGdo,employeeList);
+gdoApp.get('/gdo/employees',verifyGdo,employeeList);
 
 //specific details of a project
-gdoApp.get('/project/:project_id',verifyGdo,projectDetails);
+gdoApp.get('/gdo/project/:project_id',verifyGdo,projectDetails);
 
 //raising resource request
-gdoApp.post('/project/:project_id/resource-request',verifyGdo,resourceRequest);
+gdoApp.post('/gdo/project/:project_id/resource-request',verifyGdo,resourceRequest);
 
 //export gdo app
 module.exports = gdoApp;

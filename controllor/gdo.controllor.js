@@ -22,20 +22,21 @@ exports.allProjects=expressAsyncHandler(async(req,res)=>{
             gdo_head: req.employee.employee_id
         }
     });
-    res.send({payload:projectsUnderGdo});
+    res.status(200).send({payload:projectsUnderGdo});
 });
 
 //get all employees
 exports.employeeList=expressAsyncHandler(async(req,res)=>{
     //get all employees from employee model
     let employeeList=await Employees.findAll();
-    res.send({payload:employeeList});
+    res.status(200).send({payload:employeeList});
 })
 //assign team
 exports.AssignTeam=expressAsyncHandler(async(req,res)=>{
     //assigns team as bulk
+    //employee-team composition
     await Team_Composition.bulkCreate(req.body.team_composition);
-    res.send({message:"team assigned"})
+    res.status(201).send({message:"team assigned"})
 });
 
 //particular project details
@@ -51,7 +52,7 @@ exports.projectDetails=expressAsyncHandler(async(req,res)=>{
             ]
         }
     );
-    res.send({message:`project details of ${project_id} are`,payload:projectObj})
+    res.status(200).send({message:`project details of ${project_id} are`,payload:projectObj})
 })
 
 //raise resourcing request
@@ -64,5 +65,5 @@ exports.resourceRequest=expressAsyncHandler(async(req,res)=>{
             resource_desc:req.body.resource_desc
         }
     );
-    res.send({message:"request raised",payload:resourceObj});
+    res.status(201).send({message:"request raised",payload:resourceObj});
 });
