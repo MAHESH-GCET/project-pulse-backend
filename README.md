@@ -8,7 +8,7 @@ How to Install the project
 
 Download the git repository manually or clone it by following command
 
-git clone https://github.com/MAHESH-GCET/Project-Tracking-Application.git
+git clone https://github.com/MAHESH-GCET/Project-Pulse.git
 
 If you download manually extract the zip file.
 
