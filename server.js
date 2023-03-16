@@ -6,10 +6,10 @@ const app=express();
 //import environment variables
 require('dotenv').config();
 //start server
-const port=process.env.PORT;
-app.listen(port,()=>{
-    console.log(`server is on port ${port}`);
-});
+// const port=process.env.PORT;
+// app.listen(port,()=>{
+//     console.log(`server is on port ${port}`);
+// });
 
 //import database connection
 const Connection=require('./database/db.config');
@@ -52,3 +52,4 @@ app.use((error, req,res,next)=>{
     res.send({message:"error occured",Error:error.message})
 })
 
+module.exports=app;
