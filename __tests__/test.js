@@ -7,7 +7,7 @@ const app = require("../server");
 // login
 test("user login", async () => {
   // act
-  let response = await request(app).post("/user-api/user/login").send({
+  let response = await request(app).post("/employee-login").send({
     email:"ravi@westagilelabs.com",
     password: "ravi",
   });
@@ -23,7 +23,7 @@ test("Get all projects by admin", async () => {
   // arrange
   // act
   let response = await request(app)
-    .get("/admin-api/admin/portfolioDashboard")
+    .get("/admin/projects")
     .set(
       "Authorization",
       "bearer" +
@@ -35,11 +35,11 @@ test("Get all projects by admin", async () => {
 });
 
 // creating project test
-test("/admin-api/admin/project", async () => {
+test("/admin/add-project", async () => {
   // arrange
   // act
   let response = await request(app)
-    .post("/admin-api/admin/project")
+    .post("/admin/add-project")
     .send({
       projectName: "testdummy",
       client: 1002,
