@@ -35,7 +35,7 @@ exports.employeeList=expressAsyncHandler(async(req,res)=>{
 exports.AssignTeam=expressAsyncHandler(async(req,res)=>{
     //assigns team as bulk
     //employee-team composition
-    await Team_Composition.bulkCreate(req.body.team_composition);
+    await Team_Composition.create(req.body);
     res.status(201).send({message:"team assigned"})
 });
 

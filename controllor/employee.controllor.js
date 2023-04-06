@@ -38,14 +38,14 @@ exports.employeeLogin=expressAsyncHandler(async(req,res)=>{
     where:{email:email}
   });
   if(employeeObj==null){
-    res.status(404).send({message:"employee not found"});
+    res.status(200).send({message:"employee not found"});
   }
   //if employee exists
   else{
     //verify password
     let verifyPassword= await bcryptjs.compare(password,employeeObj.password);
     if(verifyPassword===false){
-      res.status(401).send({message:"invalid password"})
+      res.status(200).send({message:"invalid password"})
     }
     //if password verified, create jwt
     else{
@@ -59,7 +59,7 @@ exports.employeeLogin=expressAsyncHandler(async(req,res)=>{
         process.env.SECRET_KEY,{expiresIn:'7d'}
       )
       //send response
-      res.status(200).send({message:"Login Successfull",payload:signedToken});
+      res.status(200).send({message:"success",token:signedToken,employee:employeeObj});
     }
   }
 })

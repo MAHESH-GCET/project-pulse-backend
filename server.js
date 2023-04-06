@@ -3,6 +3,10 @@ const express=require('express');
 //create express application
 const app=express();
 
+//cors
+const cors=require("cors");
+app.use(cors());
+
 //import environment variables
 require('dotenv').config();
 //start server

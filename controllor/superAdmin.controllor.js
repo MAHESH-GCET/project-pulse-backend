@@ -31,3 +31,9 @@ exports.assignRole=expressAsyncHandler(async(req,res)=>{
         res.status(200).send({message:`employee ${email} assigned as ${role}`})
     }
 })
+
+//get all employees
+exports.getAllEmployees = expressAsyncHandler(async(req,res)=>{
+    let employees=await Employees.findAll();
+    res.send({message:'employees',employees:employees});
+})

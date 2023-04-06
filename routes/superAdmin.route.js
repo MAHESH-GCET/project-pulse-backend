@@ -6,7 +6,7 @@ const superAdminApp=express.Router();
 const {Employees}=require('../database/models/employee.model');
 //imprt middleware
 const verifySuperAdmin=require('../middlewares/verifySuperAdmin');
-const {assignRole} =require('../controllor/superAdmin.controllor');
+const {assignRole,getAllEmployees} =require('../controllor/superAdmin.controllor');
 
 //body parser
 superAdminApp.use(express.json());
@@ -14,8 +14,8 @@ superAdminApp.use(express.json());
 //admin has super access to assign role
 superAdminApp.put('/super-admin/assign-role',verifySuperAdmin,assignRole);
 
-//admin dashboard
-superAdminApp.get('/super-admin/dashboard',verifySuperAdmin,);
+//all employees
+superAdminApp.get('/super-admin/employees',verifySuperAdmin,getAllEmployees);
 
 //export super admin app
 module.exports = superAdminApp;

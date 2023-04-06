@@ -8,8 +8,8 @@ const app = require("../server");
 test("user login", async () => {
   // act
   let response = await request(app).post("/employee-login").send({
-    email:"ravi@westagilelabs.com",
-    password: "ravi",
+    email:"gdotest.dummy@westagilelabs.com",
+    password: "gdotest",
   });
 
   // assertions
@@ -41,18 +41,16 @@ test("/admin/add-project", async () => {
   let response = await request(app)
     .post("/admin/add-project")
     .send({
-      projectName: "testdummy",
-      client: 1002,
-      gdoId: 100,
-      projectManager: 101,
-      hrManager: 102,
-      clientAccountManager: "dummy",
-      statusOfProject: "In progress",
-      startDate: "2023/03/09",
-      endDate: "2023/12/12",
-      overAllProjectFitnessIndicator: "Green",
-      domain: "Fullstack",
-      typeOfProject: "Development",
+    project_name:"test project",
+    client:"wal",
+    client_account_manager:2,
+    status:"in progress",
+    project_start_date:"2022-12-12",
+    project_fitness_indicator:"green",
+    domain:"webdev",
+    type_of_project:"development",
+    gdo_head:7,
+    project_manager:6
     })
     .set(
       "Authorization",

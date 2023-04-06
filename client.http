@@ -16,8 +16,8 @@ POST http://localhost:4000/employee-login
 Content-Type: application/json
 
 {
-    "email":"gdotest.dummy@westagilelabs.com",
-    "password":"gdotest"
+    "email":"shamir@westagilelabs.com",
+    "password":"shamir123"
 }
 
 ### forgot password
@@ -47,18 +47,19 @@ Content-Type: application/json
     "role":"gdo"
 }
 
-### get all data of gdos
-GET http://localhost:4000/super-admin/dashboard
+### get all employees
+GET http://localhost:4000/super-admin/employees
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hdmVlbkB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImVtcGxveWVlX2lkIjoxLCJpYXQiOjE2Nzk5OTg1NDQsImV4cCI6MTY4MDYwMzM0NH0.RZbmY6C3-FZcB0P_v-iQqT_TYEkTbv44ZRQswXT3RF8
 
 
 ### ------------------------------------------------------admin api ----------------------------------------------------------------------------
 ### add new project\
 POST http://localhost:4000/admin/add-project
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc5NjE5NCwiZXhwIjoxNjc5NDAwOTk0fQ.BTHaYRc3kvnsD7qPdIEmlzTQLHs3DI4-e95EWyDamac
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY4MDA3MzEwMywiZXhwIjoxNjgwNjc3OTAzfQ.4OWFYOtXj7bHBRN_KctvU2HV2WkiIesRIylIVhJhcDg
 Content-Type: application/json
 
 {
-    "project_name":"test project",
+    "project_name":"test",
     "client":"wal",
     "client_account_manager":2,
     "status":"in progress",
@@ -72,7 +73,7 @@ Content-Type: application/json
 
 ### get all projects 
 GET http://localhost:4000/admin/projects
-Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc5NjE5NCwiZXhwIjoxNjc5NDAwOTk0fQ.BTHaYRc3kvnsD7qPdIEmlzTQLHs3DI4-e95EWyDamac
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3OTk5NDk5NCwiZXhwIjoxNjgwNTk5Nzk0fQ.4VI3CepZPkIAGMjD9k9G_OG_9hAbI2u7DL_OyeE_DKc
 
 ### get specific project details
 GET http://localhost:4000/admin/project/4
@@ -80,7 +81,7 @@ Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQH
 
 ### get resourcing request by admin on particular project
 GET http://localhost:4000/admin/project/1/resource-requests
-Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY3ODc5NjE5NCwiZXhwIjoxNjc5NDAwOTk0fQ.BTHaYRc3kvnsD7qPdIEmlzTQLHs3DI4-e95EWyDamac
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhc2hpQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImFkbWluIiwiZW1wbG95ZWVfaWQiOjIsImlhdCI6MTY4MDA3OTQwNCwiZXhwIjoxNjgwNjg0MjA0fQ.i_TLUTw1ZazKHlON6GqA8HTvu7DUQx7Fpu61wWkNwmw
 
 ### update existing project
 PUT http://localhost:4000/admin/edit/project/3
@@ -135,7 +136,7 @@ Content-Type: application/json
 
 ### get specific project details
 GET http://localhost:4000/gdo/project/5
-Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcnVuQHdlc3RhZ2lsZWxhYnMuY29tIiwicm9sZSI6ImdkbyIsImVtcGxveWVlX2lkIjozLCJpYXQiOjE2Nzg3OTYyNjAsImV4cCI6MTY3OTQwMTA2MH0.PazB70xYq7eYWYXIjTGkLlbcpVmEm28zGpXU0NTznyw
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjgwMTU4MDYyLCJleHAiOjE2ODA3NjI4NjJ9.sUHMG1wqq1s1AugN2l9apn634Jin_Drvp9dNI-qT4fA
 
 ### raise resourcing request
 POST http://localhost:4000/gdo/project/1/resource-request
@@ -151,11 +152,11 @@ Content-Type: application/json
 ### ------------------------------------------------------------- manager api --------------------------------------------------------
 ### get projects under manager
 GET http://localhost:4000/manager/projects 
-Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoYWl0YW55YUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NiwiaWF0IjoxNjc4Nzk2MzM2LCJleHAiOjE2Nzk0MDExMzZ9.yL0iy_ycZcA2bDE2OP1PRBcDJoNj1dsNiH0TEPlywuA
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjgwMTQ5MTUwLCJleHAiOjE2ODA3NTM5NTB9.jCyV5qV9UUYGL-ghiq5CrMs5aHY8y9-CgamflvlcxK4
 
 ### get specific details of project
 GET http://localhost:4000/manager/project/5
-Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoYWl0YW55YUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NiwiaWF0IjoxNjc4Nzk2MzM2LCJleHAiOjE2Nzk0MDExMzZ9.yL0iy_ycZcA2bDE2OP1PRBcDJoNj1dsNiH0TEPlywuA
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW1pckB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NSwiaWF0IjoxNjgwMTU4MDYyLCJleHAiOjE2ODA3NjI4NjJ9.sUHMG1wqq1s1AugN2l9apn634Jin_Drvp9dNI-qT4fA
 ### raise concern
 POST http://localhost:4000/manager/project-concern
 Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoYWl0YW55YUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0LW1hbmFnZXIiLCJlbXBsb3llZV9pZCI6NiwiaWF0IjoxNjc4Nzk2MzM2LCJleHAiOjE2Nzk0MDExMzZ9.yL0iy_ycZcA2bDE2OP1PRBcDJoNj1dsNiH0TEPlywuA

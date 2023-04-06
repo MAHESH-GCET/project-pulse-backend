@@ -3,6 +3,7 @@ const expressAsyncHandler=require('express-async-handler');
 const { where } = require('sequelize');
 
 //import required model
+const {Employees}=require('../database/models/employee.model')
 const {Project}=require('../database/models/project.model');
 const {Project_Concerns}=require('../database/models/project_concerns.model');
 const {Project_Updates}=require('../database/models/project_updates.model');
@@ -13,7 +14,8 @@ const {Team_Composition}=require('../database/models/team-composition.model');
 exports.addProject=expressAsyncHandler(async(req,res)=>{
     let newProject=req.body;
     await Project.create(req.body);
-    res.status(201).send({message:"new project added"});
+    res.status(201).send({message:"new project added",payload:newProject});
+   
 })
 
 //get project details

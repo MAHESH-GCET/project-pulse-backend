@@ -94,7 +94,7 @@ const transporter = nodemailer.createTransport({
 
 //to raise a concern
 exports.raiseConcern=expressAsyncHandler(async(req,res)=>{
-  let concernObj=await Project_Concerns.create(req.body.project_concerns);
+  let concernObj=await Project_Concerns.create(req.body);
   //trigger mail
   let mailOptions = {
       from: "mehakarmahesh@gmail.com",
@@ -128,7 +128,7 @@ exports.modifyConcern=expressAsyncHandler(async(req,res)=>{
 //to update project progress
 exports.updateProjectProgress=expressAsyncHandler(async(req,res)=>{
   //create update 
-    let updateObj=await Project_Updates.create(req.body.project_updates);
+    let updateObj=await Project_Updates.create(req.body);
     res.status(200).send({message:"project progress updated",payload:updateObj});
 })
 
