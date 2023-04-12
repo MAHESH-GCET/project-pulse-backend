@@ -79,3 +79,9 @@ exports.deleteProject=expressAsyncHandler(async(req,res)=>{
     });
     res.send({message:`project ${project_id} deleted`});
 })
+
+// get all employees
+exports.getEmployees=expressAsyncHandler(async(req,res)=>{
+    let employeeList=await Employees.findAll();
+    res.status(200).send({message:'employee list',payload: employeeList});
+})

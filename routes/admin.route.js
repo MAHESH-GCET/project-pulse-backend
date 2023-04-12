@@ -6,7 +6,7 @@ const adminApp=express.Router();
 //body parser
 adminApp.use(express.json());
 //import req handlers
-const {addProject,detailedProjectView,specificProjectView,getResourceRequests,updateProject,deleteProject}=require('../controllor/admin.controllor');
+const {addProject,detailedProjectView,specificProjectView,getResourceRequests,updateProject,deleteProject,getEmployees}=require('../controllor/admin.controllor');
 //import authentication middleware
 const verifyAdmin=require('../middlewares/verifyAdmin')
 
@@ -27,6 +27,9 @@ adminApp.put('/admin/edit/project/:project_id',verifyAdmin,updateProject);
 
 //delete project
 adminApp.delete('/admin/edit/project/:project_id',verifyAdmin,deleteProject);
+
+// get employees
+adminApp.get('/admin/employees',verifyAdmin,getEmployees)
 
 //export app
 module.exports=adminApp;
