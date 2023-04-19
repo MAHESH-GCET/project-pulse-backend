@@ -95,21 +95,45 @@ const transporter = nodemailer.createTransport({
 //to raise a concern
 exports.raiseConcern=expressAsyncHandler(async(req,res)=>{
   let concernObj=await Project_Concerns.create(req.body);
+
+  // get gdo head of project
+  let gdoHeadIdFromProject=await Project.findOne({where:{project_id:req.body.project_id},
+    attributes:['gdo_head']
+  })
+  // get admins
+  let admin=await Employees.findAll({where:{role:'admin'},
+  attributes:['email'] 
+  })
+  
+  //get gdo
+  let gdo=await Employees.findOne({where:{employee_id:gdoHeadIdFromProject.dataValues.gdo_head},
+    attributes:['email']
+  })
+  
+  // push mail of gdo and admins in single array
+  let toMailTrigger=[]
+  admin.forEach(adminObj=>{
+    toMailTrigger.push(adminObj.email)
+  })
+  toMailTrigger.push(gdo.dataValues.email)
+  
   //trigger mail
-  let mailOptions = {
+  toMailTrigger.map(mailId=>{
+    let mailOptions = {
       from: "mehakarmahesh@gmail.com",
-      to: "shamir@westagilelabs.com",
+      to: mailId,
       subject: `new concern raised by ${concernObj.concern_raised_by}`,
       text: `the concern is ${concernObj.concern_desc}` ,
-  };
-  // send email
-  transporter.sendMail(mailOptions, function (err, info) {
-  if (err) {
-    console.log("err");
-  } 
-  else {
-    console.log("email sent", info.messageId);
-  }
+    };
+    // send email
+    transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log("err");
+    } 
+    else {
+      console.log("email sent", info.messageId);
+    }
+    })
   })
   res.status(201).send({message:"concern raised",payload:concernObj});
 })
