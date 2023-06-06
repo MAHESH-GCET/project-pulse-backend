@@ -88,7 +88,9 @@ exports.forgotPassword=expressAsyncHandler(async(req,res)=>{
     from: "mahesh",
     to: req.body.email,
     subject: "OTP to reset password for project pulse",
-    text: `Hi, OTP to reset password is : ` + otp,
+    html:`<h2>Hi</h2> 
+    <h3>The OTP to reset your password is </h3>
+    <h1>${otp}</h1>`
   };
   // send email
   transporter.sendMail(mailOptions, function (err, info) {
